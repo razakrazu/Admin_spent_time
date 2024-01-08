@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:spent_time_admin/screens/room_details/room_details.dart';
+import 'package:spent_time_admin/widgets/hotal_name.dart';
+import 'package:spent_time_admin/widgets/sub_title.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -53,19 +57,13 @@ class HomeScreen extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Name: Hotal Name',style: TextStyle(fontWeight: FontWeight.w600,
-                        fontSize: 20,
-                        color: Colors.black),),
-                            Text('Location: Munnar',style: TextStyle(fontWeight: FontWeight.w600,
-                            fontSize: 15,
-                            color: Colors.black),),
+                            HotalNameWidget(hotalName: 'Hotal Name',),
+                            SubTitleWidget(subtitle: 'Location: Munnar',),
                             SizedBox(height: 4,),
-                             Text('Date: 20/01/2024',style: TextStyle(fontWeight: FontWeight.w600,
-                            fontSize: 15,
-                            color: Colors.black),),
+                            SubTitleWidget(subtitle: 'Date: 20/10/2024',)
                           ],
                         ),
-                        SizedBox(width: 70,),
+                        SizedBox(width: 110,),
                         Column(
                         
                       children: [
@@ -73,9 +71,11 @@ class HomeScreen extends StatelessWidget {
                       height: 45,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
-                        color: const Color.fromARGB(137, 105, 105, 105).withOpacity(0.2)
+                        color: Color.fromARGB(136, 189, 187, 187).withOpacity(0.2)
                       ),
-                      child: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios_sharp,size: 20,),)),
+                      child: IconButton(onPressed: (){
+                        Get.to(RoomDetails());
+                      }, icon: Icon(Icons.arrow_forward_ios_sharp,size: 20,),)),
                       SizedBox(height: 5,),
                             Text('ViewAll',style: TextStyle(fontWeight: FontWeight.w600,
                           fontSize: 15,
@@ -99,3 +99,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+
+
