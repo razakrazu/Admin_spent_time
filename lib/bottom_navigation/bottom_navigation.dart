@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spent_time_admin/screens/appruved_property/apruved_property.dart';
 import 'package:spent_time_admin/screens/home/home_screen.dart';
 
 class BottomNavigationExample extends StatefulWidget {
@@ -14,15 +15,8 @@ class _BottomNavigationExampleState extends State {
 
   List _pages = [
   HomeScreen(),
-    Center(
-      child: Text("About"),
-    ),
-    Center(
-      child: Text("Products"),
-    ),
-    Center(
-      child: Text("Contact"),
-    ),
+ApruvdPropertyScreen(),
+ 
     Center(
       child: Text("Settings"),
     ),
@@ -40,18 +34,17 @@ class _BottomNavigationExampleState extends State {
    
       body: _pages[_selectedTab],
       bottomNavigationBar: BottomNavigationBar(
-backgroundColor: Colors.blue, 
+backgroundColor: const Color.fromARGB(255, 69, 69, 84), 
         currentIndex: _selectedTab,
         onTap: (index) => _changeTab(index),
-        selectedItemColor: Colors.red,
-        unselectedItemColor: Color.fromARGB(255, 114, 110, 110),
+        selectedItemColor: Color.fromARGB(255, 118, 224, 248),
+        unselectedItemColor: Color.fromARGB(255, 255, 255, 255),
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "About"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.grid_3x3_outlined), label: "Product"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.contact_mail), label: "Contact"),
+          
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.contact_mail), label: "Contact"),
           BottomNavigationBarItem(
               icon: Icon(Icons.settings), label: "Settings"),
         ],
