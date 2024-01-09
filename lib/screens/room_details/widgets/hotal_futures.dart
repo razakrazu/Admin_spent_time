@@ -7,12 +7,13 @@ class HotalFuturesWidgets extends StatelessWidget {
   const HotalFuturesWidgets({
     super.key,
   });
-
+// final btnText;
+// final btnOnTap;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children:  [
          Padding(
            padding: const EdgeInsets.only(left: 8,),
            child: SubTitleWidget(subtitle: 'Hotal & Room Fecilitices',),
@@ -45,9 +46,11 @@ class HotalFuturesWidgets extends StatelessWidget {
             SizedBox(width: 105,),
                    faciliticeItamWidgets(futuresIcon: Icons.meeting_room_outlined
                    ,futuresText: 'Meeting Room',),
+                  
 
           ],),
         ),
+
       ],
     );
   }
