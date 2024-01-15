@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:spent_time_admin/core/constants.dart';
-import 'package:spent_time_admin/screens/room_details/widgets/approvel_reject_button.dart';
-import 'package:spent_time_admin/screens/room_details/widgets/hotalimagesection.dart';
-import 'package:spent_time_admin/screens/room_details/widgets/house_nearby_widget.dart';
-import 'package:spent_time_admin/screens/room_details/widgets/house_policies.dart';
-import 'package:spent_time_admin/screens/room_details/widgets/name_about_widget.dart';
-import 'package:spent_time_admin/screens/room_details/widgets/hotal_futures.dart';
-import 'package:spent_time_admin/screens/room_details/widgets/ruleswidgets.dart';
+import 'package:spent_time_admin/view/room_details/widgets/approvel_reject_button.dart';
+import 'package:spent_time_admin/view/room_details/widgets/hotalimagesection.dart';
+import 'package:spent_time_admin/view/room_details/widgets/house_nearby_widget.dart';
+import 'package:spent_time_admin/view/room_details/widgets/house_policies.dart';
+import 'package:spent_time_admin/view/room_details/widgets/name_about_widget.dart';
+import 'package:spent_time_admin/view/room_details/widgets/hotal_futures.dart';
+import 'package:spent_time_admin/view/room_details/widgets/ruleswidgets.dart';
 import 'widgets/govenment_document.dart';
 
 class RoomDetails extends StatelessWidget {

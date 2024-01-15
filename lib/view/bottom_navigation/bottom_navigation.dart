@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:spent_time_admin/screens/appruved_property/apruved_property.dart';
-import 'package:spent_time_admin/screens/home/home_screen.dart';
+import 'package:spent_time_admin/view/appruved_property/apruved_property.dart';
+import 'package:spent_time_admin/view/home/home_screen.dart';
 
 class BottomNavigationExample extends StatefulWidget {
   const BottomNavigationExample({Key? key}) : super(key: key);
@@ -18,7 +18,8 @@ class _BottomNavigationExampleState extends State {
 ApruvdPropertyScreen(),
  
     Center(
-      child: Text("Settings"),
+      child: Text("Settings",
+    ),
     ),
   ];
 

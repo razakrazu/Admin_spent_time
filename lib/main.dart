@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:spent_time_admin/bottom_navigation/bottom_navigation.dart';
-import 'package:spent_time_admin/screens/home/home_screen.dart';
+import 'package:spent_time_admin/view/bottom_navigation/bottom_navigation.dart';
 
 void main() {
   runApp(const MyApp());

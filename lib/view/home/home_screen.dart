@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:spent_time_admin/screens/room_details/room_details.dart';
+import 'package:spent_time_admin/view/room_details/room_details.dart';
 import 'package:spent_time_admin/widgets/hotal_name.dart';
 import 'package:spent_time_admin/widgets/sub_title.dart';
 
