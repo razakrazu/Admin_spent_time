@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class CommonTextWidget extends StatelessWidget {
-  const CommonTextWidget({
-    super.key,  this.commontext,
+class CommenTextWidget extends StatelessWidget {
+  const CommenTextWidget({
+    super.key, required this.commontext,
   });
 final  commontext; 
   @override

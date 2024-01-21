@@ -13,7 +13,7 @@ class MainTitle extends StatelessWidget {
      label,
       style:const TextStyle(
         fontSize: 18,
-        color: Color.fromARGB(255, 230, 228, 228),
+        color: Color.fromARGB(255, 0, 0, 0),
         fontWeight: FontWeight.bold
       ),
     );

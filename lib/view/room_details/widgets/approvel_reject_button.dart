@@ -3,10 +3,10 @@ import 'package:spent_time_admin/core/colors.dart';
 
 class RejectApprovelButtensWidget extends StatelessWidget {
   const RejectApprovelButtensWidget({
-    super.key, 
+    super.key, required this.approvelOnTap,required this.rejectOnTap, 
   });
-// final approvelOnTap;
-// final rejectOnTap;
+final approvelOnTap;
+final rejectOnTap;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,13 +14,10 @@ class RejectApprovelButtensWidget extends StatelessWidget {
       child: Row(
        
        children: [
-               
-    
-      
-        ElevatedButton(onPressed: (){},style:ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 36, 112, 0)), child: Text('Approved',style: TextStyle(color: WhiteColor,fontWeight: FontWeight.w600,fontSize: 16),),), 
+        ElevatedButton(onPressed: approvelOnTap,style:ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 36, 112, 0)), child: Text('Approved',style: TextStyle(color: WhiteColor,fontWeight: FontWeight.w600,fontSize: 16),),), 
         
         SizedBox(width: 60,),
-       ElevatedButton(onPressed: (){},style:ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 135, 0, 0)), child: Text('Rejected',style: TextStyle(color: WhiteColor,fontWeight: FontWeight.w600,fontSize: 16),),),
+       ElevatedButton(onPressed: rejectOnTap,style:ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 135, 0, 0)), child: Text('Rejected',style: TextStyle(color: WhiteColor,fontWeight: FontWeight.w600,fontSize: 16),),),
       ],),
     );
   }

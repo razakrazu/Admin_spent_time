@@ -15,7 +15,7 @@ final validation;
     // required this.onChanged,
      required this.texttype,
      required this.maxLength,
-     required this.validation,
+      this.validation,
 
   });
   

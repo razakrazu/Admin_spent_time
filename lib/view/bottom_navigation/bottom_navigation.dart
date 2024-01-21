@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spent_time_admin/view/appruved_property/apruved_property.dart';
 import 'package:spent_time_admin/view/home/home_screen.dart';
+import 'package:spent_time_admin/view/settings/settings.dart';
 
 class BottomNavigationExample extends StatefulWidget {
   const BottomNavigationExample({Key? key}) : super(key: key);
@@ -17,10 +18,7 @@ class _BottomNavigationExampleState extends State {
   HomeScreen(),
 ApruvdPropertyScreen(),
  
-    Center(
-      child: Text("Settings",
-    ),
-    ),
+    SettingScreen()
   ];
 
   _changeTab(int index) {

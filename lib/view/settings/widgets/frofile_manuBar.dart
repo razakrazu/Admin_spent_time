@@ -24,10 +24,10 @@ class ProfileManuWidget extends StatelessWidget {
           height: 45,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100),
-              color: WhiteColor.withOpacity(0.2)),
+              color: BlackColor.withOpacity(0.2)),
           child: Icon(
             profileIcon,
-            color: WhiteColor,
+            color: BlackColor,
           ),
         ),
         title: MainTitle(label: profileTitle),
@@ -36,10 +36,10 @@ class ProfileManuWidget extends StatelessWidget {
           height: 33,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100),
-              color: WhiteColor.withOpacity(0.2)),
+              color: BlackColor.withOpacity(0.2)),
           child: Icon(
             Icons.arrow_forward_ios_outlined,
-            color: WhiteColor,
+            color: BlackColor,
           ),
         ),
       ),
