@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-const BlackColor = Colors.black;
+const blackColor = Colors.black;
 
-const WhiteColor = Colors.white;
+const whiteColor = Colors.white;

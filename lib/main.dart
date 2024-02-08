@@ -14,6 +14,7 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  
 
   
   @override
@@ -31,6 +32,8 @@ class MyApp extends StatelessWidget {
 GetPage(name: '/', page: ()=>BottomNavigationExample()),
 GetPage(name: '/AddRooms', page: ()=>HomeScreen()),
 GetPage(name: '/ApruvdPropertyScreen', page: ()=>ApruvdPropertyScreen()),
+
+
       ],);
   }
 }

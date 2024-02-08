@@ -20,9 +20,9 @@ const Width10 = SizedBox(width: 10,);
 
 const Width20 = SizedBox(width: 20,);
 
-const Width30 = SizedBox(width: 30,);
+const width30 = SizedBox(width: 30,);
 
-const Width40 = SizedBox(width: 40,);
+const width40 = SizedBox(width: 40,);
 
 const forgetPasswordSubtitle = 'Select one of the option give below  to \n reset your password';
 const forgetPasswordEmailTitle =   'Make Selection!';

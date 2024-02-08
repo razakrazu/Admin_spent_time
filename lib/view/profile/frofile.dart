@@ -24,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
                                   height: 120,
                                   width: 120,
                                  decoration: BoxDecoration(
-                                  image: DecorationImage(image:  AssetImage('lib/assets/iug.jpeg'),
+                                  image:const DecorationImage(image:  AssetImage('lib/assets/iug.jpeg'),
                                   fit: BoxFit.cover),
                                   borderRadius: BorderRadius.circular(400),
                                   
@@ -40,10 +40,10 @@ class ProfileScreen extends StatelessWidget {
                                          height: 35,
                                          decoration: BoxDecoration(
                                              borderRadius: BorderRadius.circular(100),
-                                             color: BlackColor.withOpacity(0.4)),
-                                         child: Icon(
+                                             color: blackColor.withOpacity(0.4)),
+                                         child:const Icon(
                                            Icons.edit,
-                                           color: WhiteColor,
+                                           color: whiteColor,
                                          ),
                                        ),
                                ),

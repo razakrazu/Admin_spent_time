@@ -33,7 +33,7 @@ class DocumentButtonWidgets extends StatelessWidget {
                       side: BorderSide(color: Color.fromARGB(255, 1, 170, 255))),
                 ),
               ),
-              child: Text(
+              child: const Text(
                 'Documents',
                 style: TextStyle(
                     color: Color.fromARGB(255, 0, 0, 0),

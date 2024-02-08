@@ -14,10 +14,16 @@ final rejectOnTap;
       child: Row(
        
        children: [
-        ElevatedButton(onPressed: approvelOnTap,style:ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 36, 112, 0)), child: Text('Approved',style: TextStyle(color: WhiteColor,fontWeight: FontWeight.w600,fontSize: 16),),), 
+        ElevatedButton(onPressed: approvelOnTap,
+        style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 36, 112, 0)), 
+        child: const Text('Approved',style: TextStyle(
+          color: whiteColor,fontWeight: FontWeight.w600,fontSize: 16),),), 
         
-        SizedBox(width: 60,),
-       ElevatedButton(onPressed: rejectOnTap,style:ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 135, 0, 0)), child: Text('Rejected',style: TextStyle(color: WhiteColor,fontWeight: FontWeight.w600,fontSize: 16),),),
+       const SizedBox(width: 60,),
+       ElevatedButton(onPressed: rejectOnTap,
+       style:ElevatedButton.styleFrom(backgroundColor:const Color.fromARGB(255, 135, 0, 0))
+       , child: const Text('Rejected',style: TextStyle(
+        color: whiteColor,fontWeight: FontWeight.w600,fontSize: 16),),),
       ],),
     );
   }

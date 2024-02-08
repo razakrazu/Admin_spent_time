@@ -1,3 +1,4 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -45,8 +46,17 @@ Stream<QuerySnapshot> getAccepted()  {
     const CircularProgressIndicator();
     }
   }
-
-
+ Future<void> deleteApprovedData(String documentId) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('approvedRooms')
+          .doc(documentId)
+          .delete();
+    } catch (error) {
+      print('Error deleting approved data: $error');
+      rethrow;
+    }
+ }
 Future<void> addrejected(Map<String, dynamic>? data) async {
   
     if (data != null) {
@@ -58,21 +68,8 @@ Future<void> addrejected(Map<String, dynamic>? data) async {
   
 }
 
- Future <void> deleteDataFromFirebase(String? documentId) async{
-      
-  if (documentId != null) {
-   await  FirebaseFirestore.instance
-          .collection('ClientData') 
-          .doc(documentId)
-          .delete();
-  } else {
-    print('Document ID not available');
-  }
 
- }
 
 
 }
-
- 
     

@@ -8,12 +8,14 @@ class ApruvdPropertyScreen extends StatelessWidget {
   ApruvdPropertyScreen({super.key});
 
   final AdminController allOwnerController = AdminController();
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 69, 69, 84),
-        title: Text(
+        title: const Text(
           'Appruved Room',
           style: TextStyle(
             color: Colors.white,
@@ -27,7 +29,7 @@ class ApruvdPropertyScreen extends StatelessWidget {
           stream: allOwnerController.getAccepted(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return Center(
+              return  const Center(
                 child: CircularProgressIndicator(),
               );
             }
@@ -38,10 +40,10 @@ class ApruvdPropertyScreen extends StatelessWidget {
                 ),
               );
             }
-            final List<QueryDocumentSnapshot> documents = snapshot.data!.docs;
+            final List<QueryDocumentSnapshot> document = snapshot.data!.docs;
 
-            if (documents.isEmpty) {
-              return Center(
+            if (document.isEmpty) {
+              return const Center(
                 child: CommenTextWidget(commontext: 'faild your list is empty'),
               );
             }
@@ -49,11 +51,13 @@ class ApruvdPropertyScreen extends StatelessWidget {
             return ListView.separated(
                 itemBuilder: (context, index) {
                   Map<String, dynamic> data =
-                      documents[index].data() as Map<String, dynamic>;
+                      document[index].data() as Map<String, dynamic>;
                   return Slidable(
                     endActionPane: ActionPane(
                         motion: DrawerMotion(),
-                        dismissible: DismissiblePane(onDismissed: () {}),
+                        dismissible: DismissiblePane(onDismissed: () {
+                            allOwnerController.deleteApprovedData(document[index].id);
+                        }),
                         children: [
                           SlidableAction(
                             onPressed: null,
@@ -93,6 +97,13 @@ class ApruvdPropertyScreen extends StatelessWidget {
                                         fit: BoxFit.cover),
                                     borderRadius: BorderRadius.circular(20),
                                   ),
+//                                                      child:  CachedNetworkImage(
+//   imageUrl: (data['listImages'] as List<dynamic>).isNotEmpty ? data['listImages'][0] : '',
+//   // Other parameters...
+//   height: 100,
+//   width: 100,
+//   fit: BoxFit.cover,
+// ),
                                 ),
                               ),
                               Padding(
@@ -104,14 +115,14 @@ class ApruvdPropertyScreen extends StatelessWidget {
                                     // onTap: () => Get.to(const RoomDetails()),
                                     child: Padding(
                                       padding:
-                                          EdgeInsets.only(top: 25, left: 10),
+                                 const         EdgeInsets.only(top: 25, left: 10),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             data['propertyname'] ?? '',
-                                            style: TextStyle(
+                                            style:const TextStyle(
                                               fontSize: 20,
                                               color: Color.fromARGB(
                                                   255, 40, 39, 39),
@@ -120,7 +131,7 @@ class ApruvdPropertyScreen extends StatelessWidget {
                                           ),
                                           Text(
                                             'Categary:${data['roomtype'] ?? ''}',
-                                            style: TextStyle(
+                                            style:const TextStyle(
                                               fontSize: 15,
                                               color: Color.fromARGB(
                                                   255, 40, 39, 39),
@@ -129,7 +140,7 @@ class ApruvdPropertyScreen extends StatelessWidget {
                                           ),
                                           Text(
                                             'Place:${data['city'] ?? ''}',
-                                            style: TextStyle(
+                                            style:const TextStyle(
                                               fontSize: 15,
                                               color: Color.fromARGB(
                                                   255, 40, 39, 39),
@@ -149,11 +160,22 @@ class ApruvdPropertyScreen extends StatelessWidget {
                     ),
                   );
                 },
-                separatorBuilder: (context, index) => SizedBox(
+                separatorBuilder: (context, index) => const SizedBox(
                       height: 0,
                     ),
-                itemCount: documents.length);
+                itemCount: document.length);
           }),
     );
   }
+  Future<void> deleteApprovedData(String documentId) async {
+  try {
+    await FirebaseFirestore.instance
+        .collection('approvedRooms')
+        .doc(documentId)
+        .delete();
+  } catch (error) {
+    print('Error deleting approved data: $error');
+    rethrow;
+  }
+}
 }

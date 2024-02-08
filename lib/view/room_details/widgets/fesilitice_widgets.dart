@@ -15,26 +15,26 @@ class RoomFecliticesWidgets extends StatelessWidget {
        
        Row(
 
-         children:  [
+         children: const  [
         Padding(
           padding:  EdgeInsets.only(left: 20),
           child: faciliticeItamWidgets(futuresIcon:Icons.wifi 
           , futuresText: 'Wifi',),
 
         ),
-        Width30,
+        width30,
           Padding(
           padding:  EdgeInsets.only(left: 30),
           child: faciliticeItamWidgets(futuresIcon:Icons.fastfood_outlined 
           , futuresText: 'Food',),
         ), 
-              Width30,
+              width30,
                Padding(
           padding:  EdgeInsets.only(left: 30),
           child: faciliticeItamWidgets(futuresIcon:Icons.tv_outlined 
           , futuresText: 'Tv',),
         ),  
-              Width30,
+              width30,
         Padding(
           padding:  EdgeInsets.only(left: 30),
           child: faciliticeItamWidgets(futuresIcon:Icons.ac_unit_outlined 
@@ -46,7 +46,7 @@ class RoomFecliticesWidgets extends StatelessWidget {
        Hight40,
         Row(
 
-         children: [
+         children:  [
         Padding(
           padding:  EdgeInsets.only(left: 20),
           child: faciliticeItamWidgets(futuresIcon:Icons.pool 
@@ -65,7 +65,7 @@ class RoomFecliticesWidgets extends StatelessWidget {
           child: faciliticeItamWidgets(futuresIcon:Icons.fitness_center  
           , futuresText: 'Gym',),
         ),  
-              Width30,
+              width30,
         Padding(
           padding:  EdgeInsets.only(left: 30),
           child: faciliticeItamWidgets(futuresIcon:Icons.music_note

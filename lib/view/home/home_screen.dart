@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,12 +8,14 @@ import 'package:spent_time_admin/widgets/hotal_name.dart';
 import 'package:spent_time_admin/widgets/sub_title.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({
+  HomeScreen({
     super.key,
   });
+
   @override
   Widget build(BuildContext context) {
-    final allDataController = Get.put(AdminController());
+    AdminController allDataController = AdminController();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 69, 69, 84),
@@ -30,13 +33,14 @@ class HomeScreen extends StatelessWidget {
         stream: allDataController.getDatas(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
           return ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data =
                   document.data() as Map<String, dynamic>;
               String id = document.id;
+
               return Padding(
                 padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
                 child: Container(
@@ -51,9 +55,20 @@ class HomeScreen extends StatelessWidget {
                         width: 360,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          image: DecorationImage(
-                              image: AssetImage('lib/assets/asdlkd.jpg'),
-                              fit: BoxFit.fill),
+//                           image: DecorationImage(
+//   image: NetworkImage('${data['listImages'] ?? ''}'),
+//   fit: BoxFit.fill,
+// ),
+                        ),
+                        child: CachedNetworkImage(
+                          imageUrl:
+                              (data['listImages'] as List<dynamic>).isNotEmpty
+                                  ? data['listImages'][0]
+                                  : '',
+                          // Other parameters...
+                          height: 100,
+                          width: 100,
+                          fit: BoxFit.cover,
                         ),
                       ),
                       Padding(
@@ -71,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                                   subtitle:
                                       'Categary:${data['roomtype'] ?? ''}',
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 4,
                                 ),
                                 SubTitleWidget(
@@ -86,20 +101,21 @@ class HomeScreen extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(100),
-                                        color:
-                                            Color.fromARGB(136, 189, 187, 187)
-                                                .withOpacity(0.2)),
+                                        color: const Color.fromARGB(
+                                                136, 189, 187, 187)
+                                            .withOpacity(0.2)),
                                     child: IconButton(
                                       onPressed: () {
-                                        print(id);
                                         allDataController
-                                            .deleteDataFromFirebase(id);
+                                            .deleteApprovedData(document.id);
 
                                         Get.to(
                                             RoomDetails(
+                                              data: data,
                                               adminId: id,
                                             ),
                                             arguments: data);
+                                        //  allDataController.getAllImagesFromFirebase();
                                       },
                                       icon: const Icon(
                                         Icons.arrow_forward_ios_sharp,

@@ -10,7 +10,7 @@ class EnterEmailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
    
     return Scaffold(
-      backgroundColor: BlackColor,
+      backgroundColor: blackColor,
       body: Container(
         child: Padding(
           padding: const EdgeInsets.only(top: 100),
@@ -21,14 +21,14 @@ class EnterEmailScreen extends StatelessWidget {
 child: Image(image: AssetImage('lib/assets/ewre.jpeg')),
          ),
          Hight30,
-                  Text(enterEmailScreenTitle, style: TextStyle(
+                  Text(enterEmailScreenTitle, style: const TextStyle(
                                            color: Color.fromARGB(255, 255, 255, 255),
                                            
                                            fontWeight: FontWeight.bold,
                                            fontSize: 30,
                                          ),),
                                          Hight10,
-                                         Text(forgetPasswordSubtitle,   style: const TextStyle(color: Colors.white,fontSize: 17),
+                                         Text(forgetPasswordSubtitle,   style:  TextStyle(color: Colors.white,fontSize: 17),
                                             ),
                                             Hight20,
               
@@ -45,18 +45,18 @@ child: Image(image: AssetImage('lib/assets/ewre.jpeg')),
             hintStyle: const TextStyle(
               color: Colors.white,
             ),
-            prefixIcon: Icon(
+            prefixIcon:const Icon(
               Icons.mail_outline,
-              color: const Color.fromARGB(255, 200, 200, 200),
+              color:  Color.fromARGB(255, 200, 200, 200),
             ),
             
                 ),
                  
-                style: TextStyle(color: WhiteColor),
+                style:const TextStyle(color: whiteColor),
                   
               ),
           ),
-          ElevatedButton(onPressed: (){},style: ButtonStyle(), child: Text('Next'))
+          ElevatedButton(onPressed: (){},style:   ButtonStyle(), child:  Text('Next'))
             ],
           ),
         ),

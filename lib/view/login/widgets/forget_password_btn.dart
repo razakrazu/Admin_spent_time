@@ -37,8 +37,8 @@ final VoidCallback onTap;
               
              Hight20,
              Text(title,
-       style: TextStyle(fontWeight: FontWeight.bold)),
-     Text(subtitle,    style: TextStyle(color: BlackColor),
+       style:const TextStyle(fontWeight: FontWeight.bold)),
+     Text(subtitle,    style: TextStyle(color: blackColor),
                                    ),
                                    
            ],),

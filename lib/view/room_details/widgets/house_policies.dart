@@ -13,17 +13,17 @@ final checkout;
     return Column(
      crossAxisAlignment: CrossAxisAlignment.start,
      children: [
-      SubTitleWidget(subtitle: 'House Policies',),
+   const   SubTitleWidget(subtitle: 'House Policies',),
       Hight10,
 Padding(
   padding: const EdgeInsets.only(left: 30),
   child:   Row(children: [
-    Icon(Icons.key),
+  const  Icon(Icons.key),
     Width10,
   
           Text('Check-in\n${checkin}'),
   
-       SizedBox(width: 120,),
+     const  SizedBox(width: 120,),
 
              Text('Checkout\nTill${checkout}'),
   

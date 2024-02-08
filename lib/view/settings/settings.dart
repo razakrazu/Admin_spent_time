@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:spent_time_admin/controller/firebase_reposetry.dart';
 import 'package:spent_time_admin/core/constants.dart';
 import 'package:spent_time_admin/view/settings/widgets/frofile_manuBar.dart';
-import 'package:spent_time_admin/view/singup/singup_screen.dart';
 
 class SettingScreen extends StatelessWidget {
-  const SettingScreen({super.key});
-
+   SettingScreen({super.key});
+ final allDataController = Get.put(AdminController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,28 +20,30 @@ class SettingScreen extends StatelessWidget {
             children: [
            
               Hight40,
-              ProfileManuWidget(
+          const    ProfileManuWidget(
                 profileIcon: Icons.settings,
                 profileTitle: 'Settings',
               ),
-              ProfileManuWidget(
+        const      ProfileManuWidget(
                 profileIcon: Icons.notes_sharp,
                 profileTitle: 'About',
+             
               ),
-              ProfileManuWidget(
+         const     ProfileManuWidget(
                 profileIcon: Icons.share,
                 profileTitle: 'Share',
               ),
               Hight20,
-              ProfileManuWidget(
+           const   ProfileManuWidget(
                 profileIcon: Icons.privacy_tip_outlined,
                 profileTitle: 'privacy',
+               
               ),
               ProfileManuWidget(
                 profileIcon: Icons.power_settings_new_outlined,
                 profileTitle: 'LogOut',
             OnTap: (){
-              Get.to(Singup_Screen());
+  // allDataController.getAllImagesFromFirebase();
             }
              
                 

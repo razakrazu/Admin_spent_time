@@ -42,7 +42,7 @@ final validation;
         
       ),
        
-      style: TextStyle(color: BlackColor),
+      style: TextStyle(color: blackColor),
 
     );
   }

@@ -11,7 +11,7 @@ class Singup_Screen extends StatelessWidget {
 
     return Scaffold(
 
-     backgroundColor: Color.fromARGB(255, 215, 215, 215),
+     backgroundColor:const Color.fromARGB(255, 215, 215, 215),
 
       body:
           // Obx(() {  return
@@ -28,9 +28,9 @@ class Singup_Screen extends StatelessWidget {
                   width: 350,
                   decoration: BoxDecoration(
                     border: Border.all(width: 0,
-                        color: Color.fromARGB(255, 102, 96, 96)),
+                        color:const Color.fromARGB(255, 102, 96, 96)),
                     borderRadius: BorderRadius.circular(20),
-                    color: Color.fromARGB(255, 173, 178, 181)
+                    color:const Color.fromARGB(255, 173, 178, 181)
                   ),
                   child: Form(
                     child: ListView(

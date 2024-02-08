@@ -25,3 +25,69 @@
 //     );
 //   }
 // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'image_controller.dart';
+
+// class MyWidget extends StatelessWidget {
+//   final ImageController controller = Get.put(ImageController());
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('My Widget'),
+//       ),
+//       body: Center(
+//         child: ElevatedButton(
+//           onPressed: () async {
+//             await controller.getImageUrls();
+//             // Once you fetch the image URLs, you can use them as needed.
+//             // For example, you can display them in a ListView.
+//           },
+//           child: Text('Fetch Images'),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+
+// import 'package:get/get.dart';
+// import 'package:firebase_storage/firebase_storage.dart';
+
+// class ImageController extends GetxController {
+//   RxList<String> imageUrls = <String>[].obs;
+//   final FirebaseStorage storage = FirebaseStorage.instance;
+
+//   Future<void> getImageUrls() async {
+//     try {
+//       // Reference to the root of your storage bucket
+//       Reference storageReference = storage.ref();
+
+//       // List all items in the folder
+//       ListResult result = await storageReference.child('images').listAll();
+
+//       // Iterate through items and fetch download URLs
+//       for (Reference ref in result.items) {
+//         String downloadURL = await ref.getDownloadURL();
+//         imageUrls.add(downloadURL);
+//       }
+//     } catch (error) {
+//       print('Error fetching image URLs: $error');
+//     }
+//   }
+// }

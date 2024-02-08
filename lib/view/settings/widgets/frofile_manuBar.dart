@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:spent_time_admin/core/colors.dart';
 import 'package:spent_time_admin/widgets/main_title.dart';
@@ -24,10 +23,10 @@ class ProfileManuWidget extends StatelessWidget {
           height: 45,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100),
-              color: BlackColor.withOpacity(0.2)),
+              color: blackColor.withOpacity(0.2)),
           child: Icon(
             profileIcon,
-            color: BlackColor,
+            color: blackColor,
           ),
         ),
         title: MainTitle(label: profileTitle),
@@ -36,10 +35,10 @@ class ProfileManuWidget extends StatelessWidget {
           height: 33,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100),
-              color: BlackColor.withOpacity(0.2)),
-          child: Icon(
+              color: blackColor.withOpacity(0.2)),
+          child:const Icon(
             Icons.arrow_forward_ios_outlined,
-            color: BlackColor,
+            color: blackColor,
           ),
         ),
       ),
