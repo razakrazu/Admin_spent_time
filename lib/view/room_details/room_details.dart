@@ -25,6 +25,18 @@ class RoomDetails extends StatelessWidget {
     Map<String, dynamic>? data = Get.arguments as Map<String, dynamic>?;
 
     return Scaffold(
+          appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 69, 69, 84),
+        title: const Text(
+          'Room Details',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w500,
+            fontSize: 25,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child:
         Container(
@@ -129,6 +141,7 @@ class RoomDetails extends StatelessWidget {
                               propertyIcon: Icons.dinner_dining,
                               propertyName: 'Room Rate: ${data['propertyPrice']}',
                             ),
+                            
                             Hight20,
                           
                             SubTitleWidget(
@@ -148,7 +161,24 @@ class RoomDetails extends StatelessWidget {
                             Hight10,
                             NearByPropertyWidget(
                               propertyIcon: Icons.local_hospital_outlined,
-                              propertyName: 'Parking: ${data['parking']}',
+                              propertyName: 'Parking: ${data['parking']
+                          
+                              }',
+                            ),
+                              Hight10,
+                            NearByPropertyWidget(
+                              propertyIcon: Icons.beach_access,
+                              propertyName: 'Wifi: ${data['wifi']}',
+                            ),
+                              Hight10,
+                            NearByPropertyWidget(
+                              propertyIcon: Icons.beach_access,
+                              propertyName: 'Meeting Room: ${data['meetinghall']}',
+                            ),
+                              Hight10,
+                            NearByPropertyWidget(
+                              propertyIcon: Icons.beach_access,
+                              propertyName: 'Ac: ${data['Ac']}',
                             ),
                             Hight10,
                             NearByPropertyWidget(
