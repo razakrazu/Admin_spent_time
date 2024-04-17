@@ -19,13 +19,13 @@ class RoomDetails extends StatelessWidget {
   final Map<String, dynamic> data;
 
   // final AdminController imageController = Get.find();
-  @override 
+  @override
   Widget build(BuildContext context) {
     AdminController adminController = AdminController();
     Map<String, dynamic>? data = Get.arguments as Map<String, dynamic>?;
 
     return Scaffold(
-          appBar: AppBar(
+      appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 69, 69, 84),
         title: const Text(
           'Room Details',
@@ -38,9 +38,7 @@ class RoomDetails extends StatelessWidget {
         centerTitle: true,
       ),
       body: SafeArea(
-        child:
-        Container(
-          
+        child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -48,8 +46,7 @@ class RoomDetails extends StatelessWidget {
                 height: 270,
                 width: 400,
                 child: GridView.builder(
-                  scrollDirection: Axis.horizontal
-              ,
+                  scrollDirection: Axis.horizontal,
                   itemCount: (data!['listImages'] as List<dynamic>).length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 1,
@@ -59,7 +56,7 @@ class RoomDetails extends StatelessWidget {
                   ),
                   itemBuilder: (BuildContext context, int index) {
                     String imageUrl = data['listImages'][index];
-                      
+
                     return Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -67,8 +64,8 @@ class RoomDetails extends StatelessWidget {
                       child: CachedNetworkImage(
                         imageUrl: imageUrl,
                         placeholder: (context, url) =>
-                            CircularProgressIndicator(),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
+            const                CircularProgressIndicator(),
+                        errorWidget: (context, url, error) =>const Icon(Icons.error),
                         fit: BoxFit.cover,
                       ),
                     );
@@ -79,7 +76,7 @@ class RoomDetails extends StatelessWidget {
                 child: ListView(
                   children: [
                     Container(
-                      height: 1000,
+                      height: 1500,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -101,7 +98,7 @@ class RoomDetails extends StatelessWidget {
                             Hight5,
                             CommenTextWidget(
                                 commontext: data['discription'] ?? 'fail'),
-                          
+
                             Hight10,
                             const HousePoliciesWidget(
                               checkin: '12:00PM',
@@ -139,12 +136,13 @@ class RoomDetails extends StatelessWidget {
                             Hight10,
                             NearByPropertyWidget(
                               propertyIcon: Icons.dinner_dining,
-                              propertyName: 'Room Rate: ${data['propertyPrice']}',
+                              propertyName:
+                                  'Room Rate: ${data['propertyPrice']}',
                             ),
-                            
+
                             Hight20,
-                          
-                            SubTitleWidget(
+
+                     const       SubTitleWidget(
                               subtitle: 'Hotal & Room Facilitice',
                             ),
                             Hight10,
@@ -156,26 +154,26 @@ class RoomDetails extends StatelessWidget {
                             Hight10,
                             NearByPropertyWidget(
                               propertyIcon: Icons.flight,
-                              propertyName: 'Power BackUp: ${data['powerBackup']}',
+                              propertyName:
+                                  'Power BackUp: ${data['powerBackup']}',
                             ),
                             Hight10,
                             NearByPropertyWidget(
                               propertyIcon: Icons.local_hospital_outlined,
-                              propertyName: 'Parking: ${data['parking']
-                          
-                              }',
+                              propertyName: 'Parking: ${data['parking']}',
                             ),
-                              Hight10,
+                            Hight10,
                             NearByPropertyWidget(
                               propertyIcon: Icons.beach_access,
                               propertyName: 'Wifi: ${data['wifi']}',
                             ),
-                              Hight10,
+                            Hight10,
                             NearByPropertyWidget(
                               propertyIcon: Icons.beach_access,
-                              propertyName: 'Meeting Room: ${data['meetinghall']}',
+                              propertyName:
+                                  'Meeting Room: ${data['meetinghall']}',
                             ),
-                              Hight10,
+                            Hight10,
                             NearByPropertyWidget(
                               propertyIcon: Icons.beach_access,
                               propertyName: 'Ac: ${data['Ac']}',
@@ -183,7 +181,7 @@ class RoomDetails extends StatelessWidget {
                             Hight10,
                             NearByPropertyWidget(
                               propertyIcon: Icons.beach_access,
-                              propertyName: 'Meeting Room: ${data['meetinghall']}',
+                              propertyName: 'Food: ${data['food']}',
                             ),
                             Hight10,
                             NearByPropertyWidget(
@@ -206,11 +204,82 @@ class RoomDetails extends StatelessWidget {
                               propertyIcon: Icons.local_hospital_outlined,
                               propertyName: 'Heater: ${data['heater']}',
                             ),
+                            Hight10,
+                            NearByPropertyWidget(
+                              propertyIcon: Icons.local_hospital_outlined,
+                              propertyName: 'Massage: ${data['massage']}',
+                            ),
+                            Hight10,
+                            NearByPropertyWidget(
+                              propertyIcon: Icons.local_hospital_outlined,
+                              propertyName: 'Cctv: ${data['cctv']}',
+                            ),
+                            Hight10,
+                            NearByPropertyWidget(
+                              propertyIcon: Icons.local_hospital_outlined,
+                              propertyName: 'Gym: ${data['WorkOut']}',
+                            ),
                             Hight20,
                             // RulesWidgets(),
                             Hight10,
-                          
+
                             // DocumentButtonWidgets(),
+                     const       SubTitleWidget(
+                              subtitle: "What's Nearby",
+                            ),
+
+                            NearByPropertyWidget(
+                              propertyIcon: Icons.local_hospital_outlined,
+                              propertyName: 'Airport: ${data['airport']}',
+                            ),
+                            Hight10,
+                            NearByPropertyWidget(
+                              propertyIcon: Icons.local_hospital_outlined,
+                              propertyName: 'BusStand: ${data['busStant']}',
+                            ),
+                            Hight10,
+                            NearByPropertyWidget(
+                              propertyIcon: Icons.local_hospital_outlined,
+                              propertyName:
+                                  'Railway Station: ${data['railwayStation']}',
+                            ),
+                            Hight10,
+                            NearByPropertyWidget(
+                              propertyIcon: Icons.local_hospital_outlined,
+                              propertyName: 'Park: ${data['park']}',
+                            ),
+                            Hight10,
+                            NearByPropertyWidget(
+                              propertyIcon: Icons.local_hospital_outlined,
+                              propertyName: 'Hospital: ${data['cctv']}',
+                            ),
+                            Hight10,
+                            NearByPropertyWidget(
+                              propertyIcon: Icons.local_hospital_outlined,
+                              propertyName: 'Town: ${data['town']}',
+                            ),
+                            Hight10,
+                            NearByPropertyWidget(
+                              propertyIcon: Icons.local_hospital_outlined,
+                              propertyName:
+                                  'Texi Stand: ${data['texiStation']}',
+                            ),
+                            Hight10,
+                            NearByPropertyWidget(
+                              propertyIcon: Icons.local_hospital_outlined,
+                              propertyName: 'Restorent: ${data['restorent']}',
+                            ),
+
+                            Hight20,
+
+                   const         SubTitleWidget(
+                              subtitle: 'Roles & ragulations',
+                            ),
+                            Hight10,
+                            NearByPropertyWidget(
+                              propertyIcon: Icons.local_hospital_outlined,
+                              propertyName: ' ${data['property Roles']}',
+                            ),
                             Hight40,
                             RejectApprovelButtensWidget(
                               approvelOnTap: () async {
@@ -220,23 +289,23 @@ class RoomDetails extends StatelessWidget {
                               rejectOnTap: () {
                                 showDialog(
                                   context: context,
-                                  builder: (BuildContext Context) {
+                                  builder: (BuildContext context) {
                                     return AlertDialog(
-                                      title:
-                                          Text('Are you sure you want to reject '),
+                                      title:const Text(
+                                          'Are you sure you want to reject '),
                                       actions: [
                                         TextButton(
                                             onPressed: () {
                                               Get.back();
                                             },
-                                            child: Text('Cancel')),
+                                            child:const Text('Cancel')),
                                         TextButton(
                                             onPressed: () {
                                               print('hey');
                                               adminController.addrejected(data);
                                               Get.to(HomeScreen());
                                             },
-                                            child: Text('Conform')),
+                                            child:const Text('Conform')),
                                       ],
                                     );
                                   },
@@ -253,12 +322,7 @@ class RoomDetails extends StatelessWidget {
             ],
           ),
         ),
-
-        
-        
-        
       ),
     );
   }
-} 
-
+}

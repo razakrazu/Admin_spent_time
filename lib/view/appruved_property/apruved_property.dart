@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -90,20 +91,24 @@ class ApruvdPropertyScreen extends StatelessWidget {
                                 child: Container(
                                   height: 100,
                                   width: 130,
-                                  decoration: BoxDecoration(
-                                    image: const DecorationImage(
-                                        image:
-                                            AssetImage('lib/assets/kmsm.jpg'),
-                                        fit: BoxFit.cover),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-//                                                      child:  CachedNetworkImage(
-//   imageUrl: (data['listImages'] as List<dynamic>).isNotEmpty ? data['listImages'][0] : '',
-//   // Other parameters...
-//   height: 100,
-//   width: 100,
-//   fit: BoxFit.cover,
-// ),
+                                  // decoration: BoxDecoration(
+                                  //   image: const DecorationImage(
+                                  //       image:
+                                  //           AssetImage('lib/assets/kmsm.jpg'),
+                                  //       fit: BoxFit.cover),
+                                  //   borderRadius: BorderRadius.circular(20),
+                                  // ),
+                                                     child: CachedNetworkImage(
+                          // imageUrl:
+                          //     (data['listImages'] as List<dynamic>).isNotEmpty
+                          //         ? data['listImages'][0]
+                          //         : '',
+                                       imageUrl: (data['listImages']??''),
+                          // Other parameters...
+                          height: 100,
+                          width: 100,
+                          fit: BoxFit.cover,
+                        ),
                                 ),
                               ),
                               Padding(
