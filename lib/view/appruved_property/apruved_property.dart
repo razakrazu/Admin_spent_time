@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +30,7 @@ class ApruvdPropertyScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot>(
-          stream: allOwnerController.getAccepted(),
+          stream: allOwnerController.approvedAllDatas(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return  const Center(
@@ -49,37 +52,16 @@ class ApruvdPropertyScreen extends StatelessWidget {
               );
             }
 
-            return ListView.separated(
-                itemBuilder: (context, index) {
-                  Map<String, dynamic> data =
-                      document[index].data() as Map<String, dynamic>;
-                  return Slidable(
-                    endActionPane: ActionPane(
-                        motion: DrawerMotion(),
-                        dismissible: DismissiblePane(onDismissed: () {
-                            allOwnerController.deleteApprovedData(document[index].id);
-                        }),
-                        children: [
-                          SlidableAction(
-                            onPressed: null,
-                            backgroundColor:
-                                const Color.fromARGB(255, 118, 17, 10),
-                            foregroundColor: Colors.white.withOpacity(0.7),
-                            icon: Icons.delete,
-                            label: 'Delete',
-                          ),
-                          SlidableAction(
-                            onPressed: null,
-                            backgroundColor:
-                                const Color.fromARGB(255, 19, 112, 44),
-                            foregroundColor:
-                                const Color.fromARGB(255, 255, 255, 255)
-                                    .withOpacity(0.7),
-                            icon: Icons.edit,
-                            label: 'Edit',
-                          ),
-                        ]),
-                    child: Container(
+
+
+
+return ListView(
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              Map<String, dynamic> data =
+                  document.data() as Map<String, dynamic>;
+              String id = document.id;
+
+              return Container(
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: Card(
@@ -88,29 +70,24 @@ class ApruvdPropertyScreen extends StatelessWidget {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  height: 100,
-                                  width: 130,
-                                  // decoration: BoxDecoration(
-                                  //   image: const DecorationImage(
-                                  //       image:
-                                  //           AssetImage('lib/assets/kmsm.jpg'),
-                                  //       fit: BoxFit.cover),
-                                  //   borderRadius: BorderRadius.circular(20),
-                                  // ),
-                                                     child: CachedNetworkImage(
-                          // imageUrl:
-                          //     (data['listImages'] as List<dynamic>).isNotEmpty
-                          //         ? data['listImages'][0]
-                          //         : '',
-                                       imageUrl: (data['listImages']??''),
+                           child: Container(
+  height: 100,
+  width: 130,
+  child: CachedNetworkImage(
+                          imageUrl:
+                              (data['listImages'] as List<dynamic>).isNotEmpty
+                                  ? data['listImages'][0]
+                                  : '',
                           // Other parameters...
                           height: 100,
                           width: 100,
                           fit: BoxFit.cover,
                         ),
-                                ),
+
+),
+
                               ),
+                              
                               Padding(
                                 padding: const EdgeInsets.only(right: 30),
                                 child: Container(
@@ -162,13 +139,9 @@ class ApruvdPropertyScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                    ),
-                  );
-                },
-                separatorBuilder: (context, index) => const SizedBox(
-                      height: 0,
-                    ),
-                itemCount: document.length);
+                    );
+            }).toList(),
+          );
           }),
     );
   }
@@ -176,8 +149,8 @@ class ApruvdPropertyScreen extends StatelessWidget {
   try {
     await FirebaseFirestore.instance
         .collection('approvedRooms')
-        .doc(documentId)
-        .delete();
+        .doc(documentId);
+        
   } catch (error) {
     print('Error deleting approved data: $error');
     rethrow;

@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AdminController extends GetxController{
+
+   final CollectionReference aprvdDatas = FirebaseFirestore.instance.collection('approvedRooms');
+
   final CollectionReference  ownerdatas = FirebaseFirestore.instance.collection('clientData');
-  
+ 
+ 
   final db =FirebaseFirestore.instance;
-  
    final CollectionReference datas =
       FirebaseFirestore.instance.collection('clientData') ;
 
@@ -22,6 +25,11 @@ class AdminController extends GetxController{
   final acceptStream = accepted.snapshots();
   return acceptStream;
 }
+ 
+Stream<QuerySnapshot>approvedAllDatas(){
+  final dataStream = aprvdDatas.snapshots();
+  return dataStream;
+} 
 
 
 Stream<QuerySnapshot> getAccepted()  {
