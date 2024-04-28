@@ -1,18 +1,17 @@
-import 'dart:developer';
-
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/get_core.dart';
+
 import 'package:spent_time_admin/controller/firebase_reposetry.dart';
+import 'package:spent_time_admin/view/appruved_property/room_full_details.dart';
 import 'package:spent_time_admin/widgets/common_text_widgets.dart';
 
 class ApruvdPropertyScreen extends StatelessWidget {
   ApruvdPropertyScreen({super.key});
 
   final AdminController allOwnerController = AdminController();
-  
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class ApruvdPropertyScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 69, 69, 84),
         title: const Text(
-          'Appruved Room',
+          'Appruved Rooms',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w500,
@@ -33,7 +32,7 @@ class ApruvdPropertyScreen extends StatelessWidget {
           stream: allOwnerController.approvedAllDatas(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return  const Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             }
@@ -52,108 +51,108 @@ class ApruvdPropertyScreen extends StatelessWidget {
               );
             }
 
+            return ListView(
+              children: snapshot.data!.docs.map((DocumentSnapshot document) {
+                Map<String, dynamic> data =
+                    document.data() as Map<String, dynamic>;
+                String id = document.id;
 
-
-
-return ListView(
-            children: snapshot.data!.docs.map((DocumentSnapshot document) {
-              Map<String, dynamic> data =
-                  document.data() as Map<String, dynamic>;
-              String id = document.id;
-
-              return Container(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: Card(
-                          color: const Color.fromARGB(255, 209, 208, 208),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                           child: Container(
-  height: 100,
-  width: 130,
-  child: CachedNetworkImage(
-                          imageUrl:
-                              (data['listImages'] as List<dynamic>).isNotEmpty
-                                  ? data['listImages'][0]
-                                  : '',
-                          // Other parameters...
-                          height: 100,
-                          width: 100,
-                          fit: BoxFit.cover,
-                        ),
-
-),
-
-                              ),
-                              
-                              Padding(
-                                padding: const EdgeInsets.only(right: 30),
-                                child: Container(
-                                  height: 120,
-                                  width: 150,
-                                  child: GestureDetector(
-                                    // onTap: () => Get.to(const RoomDetails()),
-                                    child: Padding(
-                                      padding:
-                                 const         EdgeInsets.only(top: 25, left: 10),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            data['propertyname'] ?? '',
-                                            style:const TextStyle(
-                                              fontSize: 20,
-                                              color: Color.fromARGB(
-                                                  255, 40, 39, 39),
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                          Text(
-                                            'Categary:${data['roomtype'] ?? ''}',
-                                            style:const TextStyle(
-                                              fontSize: 15,
-                                              color: Color.fromARGB(
-                                                  255, 40, 39, 39),
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                          Text(
-                                            'Place:${data['city'] ?? ''}',
-                                            style:const TextStyle(
-                                              fontSize: 15,
-                                              color: Color.fromARGB(
-                                                  255, 40, 39, 39),
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
+                return GestureDetector(
+                  onTap: () {
+                    Get.to(AppruvedRoomFullDetails(adminId: id, data: data),
+                        arguments: data);
+                  },
+       
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Card(
+                        color: const Color.fromARGB(255, 209, 208, 208),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SizedBox(
+                                height: 100,
+                                width: 130,
+                                child: CachedNetworkImage(
+                                  imageUrl:
+                                      (data['listImages'] as List<dynamic>)
+                                              .isNotEmpty
+                                          ? data['listImages'][0]
+                                          : '',
+                                  // Other parameters...
+                                  height: 100,
+                                  width: 100,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                            SizedBox(
+                              height: 120,
+                              width: 150,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 25, left: 10),
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      data['propertyname'] ?? '',
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                        color:
+                                            Color.fromARGB(255, 40, 39, 39),
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Categary:${data['roomtype'] ?? ''}',
+                                      style: const TextStyle(
+                                        fontSize: 15,
+                                        color:
+                                            Color.fromARGB(255, 40, 39, 39),
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Place:${data['city'] ?? ''}',
+                                      style: const TextStyle(
+                                        fontSize: 15,
+                                        color:
+                                            Color.fromARGB(255, 40, 39, 39),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+              const              Icon(
+                              Icons.check_box_outlined,
+                              color: Color.fromARGB(255, 1, 156, 6),
+                              size: 25,
+                            ),
+                          ],
                         ),
                       ),
-                    );
-            }).toList(),
-          );
+                    ),
+                  
+                );
+              }).toList(),
+            );
           }),
     );
   }
+
   Future<void> deleteApprovedData(String documentId) async {
-  try {
-    await FirebaseFirestore.instance
-        .collection('approvedRooms')
-        .doc(documentId);
-        
-  } catch (error) {
-    print('Error deleting approved data: $error');
-    rethrow;
+    try {
+       FirebaseFirestore.instance
+          .collection('approvedRooms')
+          .doc(documentId);
+    } catch (error) {
+      'Error deleting approved data: $error';
+      rethrow;
+    }
   }
-}
 }
