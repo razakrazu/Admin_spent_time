@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:spent_time_admin/controller/firebase_reposetry.dart';
 import 'package:spent_time_admin/core/constants.dart';
 import 'package:spent_time_admin/view/room_details/widgets/house_policies.dart';
 import 'package:spent_time_admin/widgets/common_text_widgets.dart';
@@ -16,7 +15,7 @@ class AppruvedRoomFullDetails extends StatelessWidget {
   final Map<String, dynamic> data;
   @override
   Widget build(BuildContext context) {
-        AdminController adminController = AdminController();
+  
 
         Map<String, dynamic>? data = Get.arguments as Map<String, dynamic>?;
     return Scaffold(
@@ -214,10 +213,10 @@ class AppruvedRoomFullDetails extends StatelessWidget {
                               propertyName: 'Gym: ${data['WorkOut']}',
                             ),
                             Hight20,
-                            // RulesWidgets(),
-                            Hight10,
+               
+      
 
-                            // DocumentButtonWidgets(),
+             
                      const       SubTitleWidget(
                               subtitle: "What's Nearby",
                             ),
